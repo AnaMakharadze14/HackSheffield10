@@ -6,6 +6,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+    <div class="progress-tracker" id="tracker">
+        <div class="step completed">
+            <div class="circle">1</div>
+            <label>Account</label>
+        </div>
+
+        <div class="step active">
+            <div class="circle">2</div>
+            <label>Details</label>
+        </div>
+
+        <div class="step">
+            <div class="circle">3</div>
+            <label>Confirm</label>
+        </div>
+    </div>
+</header>
     <h2>Login</h2>
     <form action="homepage.html" method="get">
     
@@ -26,7 +44,7 @@
 
     <script src="progress.js"></script>
     <script>
-        setStep(1);
+        setStep(0);
     </script>
 </body>
 </html>
