@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>signUp</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <h2>Sign Up</h2>
-    <form action="/signup" method="post"></form>
+<body class="body">
+    <div>
+        <h2>Sign Up</h2>
+        <form action="/signup" method="post" class="form"></form>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br><br>
+            <label for="email" class="form label">Email:</label>
+            <input type="email" class="form input" id="email" name="email" required>
+            <br><br>
 
-        <label for="password">Password:</label>
-        <input type ="text" id="password" name="password" required>
-        <br><br>
+            <label for="password" class="form label">Password:</label>
+            <input type ="text" class="form input" id="password" name="password" required>
+            <br><br>
 
-        <button type="submit"><a href="login.html">Sign Up</a></button>
-    </form>
+            <button type="submit" class="big-button"><a href="login.html">Sign Up</a></button>
+        </form>
+    </div>
 </body>
 </html>

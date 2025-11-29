@@ -69,27 +69,6 @@
   </form>
 </div>
 
-
-<script type="module">
-  document.getElementById("tripForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const data = {
-        start: document.getElementById("startDate").value,
-        end: document.getElementById("endDate").value,
-        destination: document.getElementById("destination").value,
-        budget: Number(document.getElementById("budget").value)
-    };
-
-    await fetch("http://localhost:3000/submitTrip", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    });
-
-    window.location.href = "confirmation.html";
-  });
-</script>
 <script src="progress.js"></script>
 <script>
     setStep(2);
