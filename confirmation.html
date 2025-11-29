@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8" />
     <title>Submission Successful</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-6">
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen p-6">
 
-    <header>
+    <!-- HEADER SHOULD STAY AT TOP -->
+    <header class="w-full flex justify-center mb-10">
         <div class="progress-tracker" id="tracker">
             <div class="step completed">
                 <div class="circle">1</div>
                 <label>Account</label>
             </div>
-
             <div class="step active">
                 <div class="circle">2</div>
                 <label>Details</label>
             </div>
-
             <div class="step">
                 <div class="circle">3</div>
                 <label>Confirm</label>
@@ -27,21 +27,33 @@
         </div>
     </header>
 
-    <div class="bg-white/80 backdrop-blur shadow-xl rounded-2xl p-10 max-w-md text-center border border-white/40">
-        
-        <!-- Check Icon -->
-        <div class="flex justify-center mb-6">
-            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-5xl">
-                ✓
+    <!-- CENTER ONLY THIS CARD -->
+    <div class="flex justify-center">
+        <div class="bg-white/80 backdrop-blur shadow-xl rounded-2xl p-10 max-w-md text-center border border-white/40">
+
+            <!-- Check Icon -->
+            <div class="flex justify-center mb-6">
+                <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-5xl">
+                    ✓
+                </div>
             </div>
+
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">
+                Submission Successful
+            </h1>
+
+            <p class="text-gray-600 mb-8">
+                Your trip preferences have been saved.
+                <br>
+                You will obtain your travel plan shortly.
+            </p>
+
         </div>
+    </div>
 
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">
-            Submission Successful
-        </h1>
-
-        <p class="text-gray-600 mb-8">
-            Your trip preferences have been saved.  
-            We’ll use this inf
-        </p>
+    <script src="progress.js"></script>
+    <script>
+        setStep(3);
+    </script>
 </body>
+
