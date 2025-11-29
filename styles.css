@@ -1,0 +1,46 @@
+/* styles.css */
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0;
+}
+
+/* Big Button */
+.big-button {
+    display: inline-block;
+    padding: 25px 50px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #6c63ff, #2196f3);
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.big-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #5a52e0, #1976d2);
+}
+
+/* Active / click effect */
+.big-button:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+    .big-button {
+        padding: 20px 35px;
+        font-size: 20px;
+    }
+}
