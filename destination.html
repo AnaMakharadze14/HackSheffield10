@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <h2 class="text-2xl font-bold text-center text-gray-800">Group Trip Planner</h2>
+  <form id="tripForm" class="bg-white/80 backdrop-blur shadow-xl rounded-2xl p-8 w-full max-w-lg space-y-6 border border-white/40">
+    <p class="text-center text-gray-500 text-sm">Enter your availability, destination, and budget</p>
+
+    <div class="space-y-2">
+      <label class="block text-gray-600 font-medium">Available Dates</label>
+      <input id="dates" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition" placeholder="e.g. Feb 10–15" required>
+    </div>
+
+    <div class="space-y-2">
+      <label class="block text-gray-600 font-medium">Preferred Destination</label>
+      <input id="destination" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition" placeholder="e.g. Hawaii" required>
+    </div>
+
+    <div class="space-y-2">
+      <label class="block text-gray-600 font-medium">Budget (USD)</label>
+      <input id="budget" type="number" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition" placeholder="e.g. 1200" required>
+    </div>
+
+    <button class="w-full bg-indigo-600 text-white py-3 rounded-xl font-medium hover:bg-indigo-700 active:scale-[0.98] transition">
+      Submit
+    </button>
+  </form>
+</div>
+
+
+<script type="module">
+  import { db } from "./firebase.js";
+  import { addDoc, collection } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+  document.getElementById("tripForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    await addDoc(collection(db, "tripRequests"), {
+      availableDates: document.getElementById("dates").value,
+      destination: document.getElementById("destination").value,
+      budget: Number(document.getElementById("budget").value),
+      submittedAt: new Date()
+    });
+
+    alert("Submitted!");
+  });
+</script>
+</body>
+</html>
