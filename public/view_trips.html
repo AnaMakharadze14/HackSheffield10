@@ -1,0 +1,20 @@
+<script>
+async function loadTrips() {
+    const res = await fetch("/trips");
+    const trips = await res.json();
+    const table = document.getElementById("tripsTable");
+
+    trips.forEach(trip => {
+        const row = table.insertRow();
+        row.insertCell(0).innerText = trip.request_id;
+        row.insertCell(1).innerText = trip.start_date;
+        row.insertCell(2).innerText = trip.end_date;
+        row.insertCell(3).innerText = trip.destination;
+        row.insertCell(4).innerText = trip.budget;
+        row.insertCell(5).innerText = trip.submitted_at;
+        row.insertCell(6).innerText = trip.username;
+    });
+}
+
+loadTrips();
+</script>

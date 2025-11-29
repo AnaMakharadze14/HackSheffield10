@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Preferences</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <div class="progress-tracker" id="tracker">
+        <div class="step completed">
+            <div class="circle">1</div>
+            <label>Account</label>
+        </div>
+
+        <div class="step active">
+            <div class="circle">2</div>
+            <label>Details</label>
+        </div>
+
+        <div class="step">
+            <div class="circle">3</div>
+            <label>Confirm</label>
+        </div>
+    </div>
+</header>
+
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <h2 class="text-2xl font-bold text-center text-gray-800">Group Trip Planner</h2>
+    <form id="tripForm" class="bg-white/80 backdrop-blur shadow-xl rounded-2xl p-8 w-full max-w-lg space-y-6 border border-white/40">
+        
+        <p class="text-center text-gray-500 text-sm">Enter your availability, destination, and budget</p>
+
+        <!-- Dates -->
+        <!-- Dates -->
+<div class="space-y-2">
+    <label class="block text-gray-600 font-medium">Available Dates</label>
+    <div class="flex gap-3">
+
+        <!-- Start Date -->
+        <input 
+            id="startDate" 
+            type="date" 
+            class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition"
+            required
+        >
+
+        <!-- End Date -->
+        <input 
+            id="endDate" 
+            type="date" 
+            class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition"
+            required
+        >
+    </div>
+</div>
+
+
+        <!-- Destination -->
+        <div class="space-y-2">
+            <label class="block text-gray-600 font-medium">Preferred Destination</label>
+            <input id="destination" type="text" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition" placeholder="e.g. Hawaii" required>
+        </div>
+
+        <!-- Budget -->
+        <div class="space-y-2">
+            <label class="block text-gray-600 font-medium">Budget (GBP)</label>
+            <input id="budget" type="number" class="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition" placeholder="e.g. 1200" required>
+        </div>
+
+        <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-medium hover:bg-indigo-700 active:scale-[0.98] transition">
+            Submit
+        </button>
+    </form>
+
+</div>
+
+<script src="progress.js"></script>
+
+<script>
+        setStep(2);
+
+document.getElementById("tripForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+        alert("You must be logged in before submitting a trip.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    const data = {
+        userId,
+        startDate: document.getElementById("startDate").value,
+        endDate: document.getElementById("endDate").value,
+        destination: document.getElementById("destination").value,
+        budget: Number(document.getElementById("budget").value)
+    };
+
+    const res = await fetch("/submitTrip", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (result.error) {
+        alert("Error: " + result.error);
+        return;
+    }
+
+    alert(result.message);
+    window.location.href = "confirmation.html";
+});
+
+</script>
+</body>
+</html>

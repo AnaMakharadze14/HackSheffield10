@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="body">
+
+<header>
+    <div class="progress-tracker" id="tracker">
+        <div class="step completed">
+            <div class="circle">1</div>
+            <label>Account</label>
+        </div>
+
+        <div class="step active">
+            <div class="circle">2</div>
+            <label>Details</label>
+        </div>
+
+        <div class="step">
+            <div class="circle">3</div>
+            <label>Confirm</label>
+        </div>
+    </div>
+</header>
+
+<div>
+    <h2>Sign Up</h2>
+
+    <form id="signUpForm">
+        <label for="signupUsername">Username:</label>
+        <input type="text" id="signupUsername" name="username" required>
+        <br><br>
+
+        <label for="signupEmail">Email:</label>
+        <input type="email" id="signupEmail" name="email" required>
+        <br><br>
+
+        <label for="signupPassword">Password:</label>
+        <input type="password" id="signupPassword" name="password" required>
+        <br><br>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("signUpForm");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById("signupUsername").value;
+        const email = document.getElementById("signupEmail").value;
+        const password = document.getElementById("signupPassword").value;
+
+        try {
+            const res = await fetch("/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                alert(data.error || "Registration failed");
+                return;
+            }
+
+            alert("Registration successful!");
+            window.location.href = "index.html";
+
+        } catch (err) {
+            console.error(err);
+            alert("Network error – is the server running?");
+        }
+    });
+});
+</script>
+
+<script src="progress.js"></script>
+<script>
+    setStep(0);
+</script>
+
+</body>
+</html>
