@@ -183,3 +183,7 @@ form button:hover {
     background: linear-gradient(135deg, #5a52e0, #1976d2);
     transform: translateY(-3px);
 }
+
+h2 {
+    text-align: center;
+}

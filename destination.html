@@ -6,6 +6,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<header>
+    <div class="progress-tracker" id="tracker">
+        <div class="step completed">
+            <div class="circle">1</div>
+            <label>Account</label>
+        </div>
+
+        <div class="step active">
+            <div class="circle">2</div>
+            <label>Details</label>
+        </div>
+
+        <div class="step">
+            <div class="circle">3</div>
+            <label>Confirm</label>
+        </div>
+    </div>
+</header>
+
 <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
     <h2 class="text-2xl font-bold text-center text-gray-800">Group Trip Planner</h2>
   <form id="tripForm" class="bg-white/80 backdrop-blur shadow-xl rounded-2xl p-8 w-full max-w-lg space-y-6 border border-white/40" action="confirmation.html" method="get">
